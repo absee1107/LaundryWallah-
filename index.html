@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreshLine Laundry Services</title>
+    <title>Interactive Color Boxes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and base styles */
@@ -11,328 +11,416 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            overflow: hidden; /* Prevent scrolling */
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        /* Navbar Styles */
-        .navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 2.5rem;
-            background-color: #ffffff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #2a6ebb;
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: #4caf50;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
-            font-weight: 500;
-            font-size: 1.05rem;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #2a6ebb;
-        }
-        
-        .username {
-            font-weight: 600;
-            color: #2a6ebb;
-            font-size: 1.05rem;
-        }
-        
-        /* Hero Section Styles */
-        .hero-section {
-            display: flex;
-            height: 100vh; /* Full viewport height */
-            width: 100vw; /* Full viewport width */
-            overflow: hidden;
-            margin-top: 0;
-        }
-        
-        /* Left Column */
-        .left-column {
-            flex: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 6rem 4rem 4rem 4rem;
-            background-color: #f9fbfe;
+            align-items: center;
+            padding: 2rem;
+            color: #333;
         }
         
-        .hero-heading {
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* Header styles */
+        header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .greeting {
             font-size: 3.2rem;
             font-weight: 800;
-            line-height: 1.2;
-            color: #1a365d;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        
+        /* Color boxes section */
+        .color-boxes-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .color-boxes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
             margin-bottom: 1.5rem;
         }
         
-        .hero-heading span {
-            color: #2a6ebb;
-        }
-        
-        .hero-description {
-            font-size: 1.25rem;
-            color: #555;
-            margin-bottom: 2.5rem;
-            max-width: 85%;
-        }
-        
-        .book-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #2a6ebb 0%, #4caf50 100%);
+        .color-box {
+            height: 180px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
             color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            text-align: center;
-            width: fit-content;
-            box-shadow: 0 5px 20px rgba(42, 110, 187, 0.3);
-            transition: all 0.3s ease;
-            border: none;
             cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            border: 4px solid transparent;
         }
         
-        .book-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(42, 110, 187, 0.4);
+        .color-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         }
         
-        .book-button i {
-            margin-left: 0.5rem;
+        .color-box.active {
+            border-color: white;
+            box-shadow: 0 0 0 3px #2c3e50;
         }
         
-        /* Right Column */
-        .right-column {
-            flex: 1;
-            background-color: #e8f4fc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Initial box colors (will be changed by JS) */
+        #red-box {
+            background-color: #f8f9fa;
+        }
+        
+        #blue-box {
+            background-color: #f8f9fa;
+        }
+        
+        #green-box {
+            background-color: #f8f9fa;
+        }
+        
+        #yellow-box {
+            background-color: #f8f9fa;
+        }
+        
+        /* User input section */
+        .user-input-section {
+            background-color: #f8f9fa;
+            border-radius: 15px;
             padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            margin-bottom: 2rem;
         }
         
-        .image-container {
-            width: 100%;
-            height: 100%;
+        .input-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        label {
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        input {
+            padding: 1rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .greet-button {
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border: none;
+            padding: 1.2rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        
-        /* Features list for visual enhancement */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-        
-        .feature-item {
-            display: flex;
-            align-items: center;
             gap: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        .greet-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .greet-button:active {
+            transform: translateY(-1px);
+        }
+        
+        /* Instructions section */
+        .instructions {
+            background-color: #e8f4fc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border-left: 5px solid #3498db;
+        }
+        
+        .instructions h3 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .instructions p {
             color: #555;
-            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
         }
         
-        .feature-icon {
-            color: #2a6ebb;
+        .instruction-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .instruction-icon {
+            color: #3498db;
             font-size: 1.2rem;
+            margin-top: 0.2rem;
         }
         
-        /* Responsive Design */
-        @media (max-width: 1100px) {
-            .hero-heading {
-                font-size: 2.8rem;
-            }
-            
-            .hero-description {
-                font-size: 1.15rem;
-            }
-            
-            .nav-links {
-                gap: 1.5rem;
-            }
+        /* Footer */
+        footer {
+            margin-top: 2rem;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            width: 100%;
         }
         
-        @media (max-width: 900px) {
-            .hero-section {
-                flex-direction: column;
-                height: 100vh;
-            }
-            
-            .left-column, .right-column {
-                flex: none;
-                height: 50vh;
-                padding: 2rem;
-            }
-            
-            .left-column {
-                justify-content: flex-start;
-                padding-top: 5rem;
-            }
-            
-            .hero-heading {
-                font-size: 2.4rem;
-            }
-            
-            .navbar {
-                padding: 1.2rem 1.5rem;
-            }
-            
-            .nav-links {
-                gap: 1.2rem;
-            }
-            
-            .logo {
-                font-size: 1.6rem;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .hero-heading {
-                font-size: 2rem;
-            }
-            
-            .hero-description {
-                font-size: 1.05rem;
-            }
-            
-            .book-button {
-                font-size: 1.1rem;
-                padding: 1rem 2rem;
-            }
-            
-            .navbar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-            }
-            
-            .left-column, .right-column {
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
                 padding: 1.5rem;
             }
             
-            .left-column {
-                height: 60vh;
+            .greeting {
+                font-size: 2.5rem;
             }
             
-            .right-column {
-                height: 40vh;
+            .color-boxes {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .color-box {
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .color-boxes {
+                grid-template-columns: 1fr;
+            }
+            
+            .greeting {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <a href="#" class="logo">Fresh<span>Line</span></a>
-        <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-        </ul>
-        <div class="username">Welcome, Alex</div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <!-- Left Column -->
-        <div class="left-column">
-            <h1 class="hero-heading">Revitalize Your <span>Clothes</span> with Expert Laundry Services!</h1>
-            <p class="hero-description">From premium dry cleaning to swift wash and fold, we deliver care and convenience. Schedule a pickup and rediscover the freshness of your clothes today!</p>
-            
-            <a href="#" class="book-button">Book a Service Today! <i class="fas fa-arrow-right"></i></a>
-            
-            <div class="features">
-                <div class="feature-item">
-                    <i class="fas fa-star feature-icon"></i>
-                    <span>Premium Dry Cleaning</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-clock feature-icon"></i>
-                    <span>Fast 24-Hour Service</span>
-                </div>
-                <div class="feature-item">
-                    <i class="fas fa-truck feature-icon"></i>
-                    <span>Free Pickup & Delivery</span>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <header>
+            <h1 id="greeting" class="greeting">Hello</h1>
+            <p class="subtitle">Welcome to the Interactive Color Boxes Demo</p>
+        </header>
         
-        <!-- Right Column -->
-        <div class="right-column">
-            <div class="image-container">
-                <!-- Using a laundry-related image from Unsplash -->
-                <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Laundry Service" class="service-image">
+        <section class="color-boxes-section">
+            <h2 class="section-title">Click on the boxes to change their colors</h2>
+            <div class="color-boxes">
+                <div id="red-box" class="color-box" data-color="red">
+                    <span>Red</span>
+                </div>
+                <div id="blue-box" class="color-box" data-color="blue">
+                    <span>Blue</span>
+                </div>
+                <div id="green-box" class="color-box" data-color="green">
+                    <span>Green</span>
+                </div>
+                <div id="yellow-box" class="color-box" data-color="yellow">
+                    <span>Yellow</span>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <section class="user-input-section">
+            <h2 class="input-title">Enter Your Name</h2>
+            <div class="input-group">
+                <div class="input-container">
+                    <label for="user-name"><i class="fas fa-user"></i> Your Name:</label>
+                    <input type="text" id="user-name" placeholder="Enter your name here">
+                </div>
+                <button id="greet-button" class="greet-button">
+                    <i class="fas fa-hand-wave"></i> Greet Me!
+                </button>
+            </div>
+        </section>
+        
+        <section class="instructions">
+            <h3><i class="fas fa-info-circle"></i> How to use this page:</h3>
+            <div class="instruction-item">
+                <i class="fas fa-mouse-pointer instruction-icon"></i>
+                <p>Click on any of the color boxes above to change its background to the corresponding color.</p>
+            </div>
+            <div class="instruction-item">
+                <i class="fas fa-keyboard instruction-icon"></i>
+                <p>Enter your name in the input field and click "Greet Me!" to personalize the greeting message.</p>
+            </div>
+            <div class="instruction-item">
+                <i class="fas fa-lightbulb instruction-icon"></i>
+                <p>Try clicking the boxes multiple times to see the color change effect.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>Interactive Color Boxes Demo &copy; 2023 | Created with HTML, CSS & JavaScript</p>
+    </footer>
 
     <script>
-        // Simple script to handle button click
-        document.querySelector('.book-button').addEventListener('click', function(e) {
-            e.preventDefault();
-            alert('Booking service coming soon! This would redirect to a booking form in a real application.');
+        // DOM elements
+        const greetingElement = document.getElementById('greeting');
+        const userNameInput = document.getElementById('user-name');
+        const greetButton = document.getElementById('greet-button');
+        const colorBoxes = document.querySelectorAll('.color-box');
+        
+        // Color mapping for boxes
+        const colorMap = {
+            'red': '#e74c3c',
+            'blue': '#3498db',
+            'green': '#2ecc71',
+            'yellow': '#f1c40f'
+        };
+        
+        // Default name for greeting
+        const defaultName = 'Innante';
+        
+        // Function to change box color when clicked
+        function changeBoxColor(event) {
+            const box = event.currentTarget;
+            const colorName = box.getAttribute('data-color');
+            const colorValue = colorMap[colorName];
+            
+            // Remove active class from all boxes
+            colorBoxes.forEach(box => box.classList.remove('active'));
+            
+            // Add active class to clicked box
+            box.classList.add('active');
+            
+            // Change the box color
+            box.style.backgroundColor = colorValue;
+            
+            // Add a visual feedback effect
+            box.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                box.style.transform = 'scale(1)';
+            }, 150);
+        }
+        
+        // Function to update greeting message
+        function updateGreeting() {
+            const userName = userNameInput.value.trim();
+            
+            // Use the entered name or default name if input is empty
+            const nameToUse = userName || defaultName;
+            
+            // Update the greeting text
+            greetingElement.textContent = `Hello, ${nameToUse}!`;
+            
+            // Add visual effect to greeting
+            greetingElement.style.color = '#e74c3c';
+            greetingElement.style.transform = 'scale(1.05)';
+            
+            setTimeout(() => {
+                greetingElement.style.transform = 'scale(1)';
+            }, 300);
+            
+            // Show a temporary message if input was empty
+            if (!userName) {
+                alert(`Since you didn't enter a name, we used the default name "${defaultName}". Try entering your own name next time!`);
+            }
+        }
+        
+        // Add event listeners to color boxes
+        colorBoxes.forEach(box => {
+            box.addEventListener('click', changeBoxColor);
         });
         
-        // Update username from a prompt (just for demo)
-        setTimeout(function() {
-            const name = prompt("What's your name? (This is just a demo)");
-            if(name && name.trim() !== '') {
-                document.querySelector('.username').textContent = 'Welcome, ' + name;
+        // Add event listener to greet button
+        greetButton.addEventListener('click', updateGreeting);
+        
+        // Allow pressing Enter key in the input field to trigger greeting
+        userNameInput.addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                updateGreeting();
             }
-        }, 2000);
+        });
+        
+        // Initialize with the first box colored
+        window.addEventListener('DOMContentLoaded', function() {
+            // Color the first box on load
+            const firstBox = document.getElementById('red-box');
+            firstBox.style.backgroundColor = colorMap['red'];
+            firstBox.classList.add('active');
+            
+            // Add some fun to the initial greeting
+            setTimeout(() => {
+                greetingElement.style.transition = 'all 0.5s ease';
+            }, 1000);
+        });
     </script>
 </body>
 </html>
